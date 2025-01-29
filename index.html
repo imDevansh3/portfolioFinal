@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        nav, .bottom-nav {
+            width: 100%;
+            background-color: grey;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .socials img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+        }
+        .screen-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background-color: grey;
+            border-radius: 10px;
+            position: relative;
+        }
+        .screen {
+            width: 95%;
+            height: 90%;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        .app-button {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            background-color: lightgray;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            margin: 10px;
+        }
+        .app-button:hover {
+            transform: scale(1.1);
+        }
+        .content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-align: center;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background: grey;
+            color: black;
+            border-radius: 50px;
+            cursor: pointer;
+            display: none;
+        }
+        .monitor-stand1{
+            width:90px;
+            height:80px;
+            background-color: #333;
+            margin-left:50px;
+        }
+        .monitor-stand2{
+            width:200px;
+            height:20px;
+            background-color: #333;
+            border-radius:20px;
+        }
+        /* Mobile Responsive Fix */
+        @media (max-width: 768px) {
+            .screen-container {
+                width: 90%;
+                max-width: 400px;
+                height: 700px;
+                border-radius: 50px;
+                background-color: black;
+                border: 2px solid #333;
+                padding: 10px;
+            }
+            .screen {
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                border-radius: 40px;
+                padding: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+            }
+            .app-button {
+                width: 80px;
+                height: 80px;
+                font-size: 16px;
+            }
+            .dynamic-island {
+                width: 110px;
+                height: 35px;
+                background-color: black;
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 20px;
+            }
+            .monitor-stand {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <p>Devansh Thakkar</p>
+        <div class="socials">
+            <img src="/images/linkedinn.png" alt="LinkedIn">
+            <img src="/images/githublogo.png" alt="GitHub">
+            <img src="/images/email.png" alt="Email">
+            <img src="/images/callicon.png" alt="Phone">
+        </div>
+    </nav>
+</header>
+
+<div class="screen-container">
+    <div class="screen">
+        <div class="dynamic-island"></div> <!-- Dynamic Island Fixed -->
+        <button class="back-button" onclick="showButtons()">⬅ Back</button>
+        <button class="app-button" onclick="showContent('education')">🎓<br>Education</button>
+        <button class="app-button" onclick="showContent('projects')">💼<br>Projects</button>
+        <button class="app-button" onclick="showContent('experience')">📜<br>Experience</button>
+        <button class="app-button" onclick="showContent('contact')">📞<br>Contact</button>
+        <button class="app-button" onclick="showContent('skills')">⚡<br>Skills</button>
+        <button class="app-button" onclick="showContent('tools')">🛠️<br>Tools</button>
+        <div id="education" class="content">Education Details</div>
+        <div id="projects" class="content">Projects Details</div>
+        <div id="experience" class="content">Experience Details</div>
+        <div id="contact" class="content">Contact Details</div>
+        <div id="skills" class="content">Skills Details</div>
+        <div id="tools" class="content">Tools Details</div>
+    </div>
+</div>
+<div class="monitor-stand">
+    <section class="monitor-stand1"></section>
+    <section class="monitor-stand2"></section>
+</div>
+
+<footer>
+    <div class="bottom-nav">&copy; 2025 | Devansh Thakkar </div>
+</footer>
+
+<script>
+    function showContent(section) {
+        document.querySelectorAll('.app-button').forEach(btn => btn.style.display = 'none');
+        document.querySelectorAll('.content').forEach(cont => cont.style.display = 'none');
+        document.getElementById(section).style.display = 'flex';
+        document.querySelector('.back-button').style.display = 'block';
+    }
+    function showButtons() {
+        document.querySelectorAll('.app-button').forEach(btn => btn.style.display = 'flex');
+        document.querySelectorAll('.content').forEach(cont => cont.style.display = 'none');
+        document.querySelector('.back-button').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
